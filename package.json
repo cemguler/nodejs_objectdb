@@ -1,0 +1,23 @@
+{
+    "name": "nodejs_objectdb",
+    "description": "HTTP based Object Database",
+    "version": "0.1.0",
+	"author": {
+		"name": "Cem Guler"
+	},	
+    "homepage": "https://github.com/cemguler/nodejs_objectdb",
+    "bugs": "https://github.com/cemguler/nodejs_objectdb/issues",
+    "keywords": [ "object", "database", "http" ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cemguler/nodejs_objectdb.git"
+    },
+    "engines": {
+        "node": ">=0.1.90"
+    },
+	"Dependencies": {
+		"async": "0.1.x",
+	},	
+	"readmeFilename": "README.md",
+    "main": "obj.server"
+}
