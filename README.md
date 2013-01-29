@@ -7,8 +7,8 @@ ObjectDB is currently in alpha stage and includes fast written dirty code. There
 
 Start by typing "nodejs obj.server"
 
-Console Commands
-----------------
+DB Level Functions
+------------------
 
 **Create a database:**   
 
@@ -24,36 +24,89 @@ Console Commands
 		],   
 		pk:field1,     //primary key   
 		mode:db        //table mode = db|mem   
-	})   
- 
-**Insert some data to table:**   
+	})
+
+**Rename a table**
+
+	dbserver.testdb.renametable("oldtable","newtable")
+	
+**Drop a table**
+
+	dbserver.testdb.removetable("oldtable")
+
+Table Level Functions
+---------------------
+
+**Insert object to table:**   
 
 	dbserver.testdb.testtable.insert({ field1:"testdata", field2:"trial" })   
+	
+**Insert array of objects:**
+
+	dbserver.testdb.testtable.insert([
+		{ field1:"testdata 2", field2:"test2" },
+		{ field1:"testdata 3", field2:"test3" }
+	])
    
-**Find inserted data by key:**   
+**Find inserted object by key:**   
 
 	dbserver.testdb.testtable.find("testdata")   
 
-**Try a TSQL Select**   
+**Running a TSQL Select statement**   
 
 	select * from testdb.testtable where field1 like 'test%'   
 
-**Update data by PK**   
+**Update object by __id**
 
-	dbserver.testdb.testtable.update({ field1:"testdata", field2:"trial - updated" })   
+	dbserver.testdb.testtable.update({ __id:1, field2:"trial - updated 1" })
+	
+**Update object by PK (Primary Key)**   
 
-**Reselect again to see if the row is updated**   
+	dbserver.testdb.testtable.updatebyPK({ field1:"testdata", field2:"trial - updated 2" })   
+
+**Update multiple objects by using a filter expression**
+
+	dbserver.testdb.testtable.updateFiltered({ field2:"xxx" }, "itm.field1=='testdata'")
+	
+**Reselect again to see if the object is updated**   
 
 	dbserver.testdb.testtable.find("testdata")   
 
-**Delete Row**   
+**Delete Object**   
 
-	dbserver.testdb.testtable.delete({ __id:1 })   
+	dbserver.testdb.testtable.deleteRow({ __id:1 })   
   
-  
-  
-Same functions for multi-row operations are also available with specific filters.
-  
+**Delete Multiple Objects by using a filter expression**
+
+	dbserver.testdb.testtable.deleteFiltered("itm.field1=='testdata'")
+	
+**Get Object at position 2**
+
+	dbserver.testdb.testtable.item(2)
+	
+**Get Objects between positions 2 and 5**
+
+	dbsrever.testdb.testtable.rows(2,5)
+	
+**Get Objects by filtering**
+
+	dbserver.testdb.testtable.filter(function(itm) {
+		return itm.field1=="testdata"
+	})
+
+**Get Object Count**
+
+	dbserver.testdb.testtable.count()
+	
+**Reindex table**
+
+	dbserver.testdb.testtable.reindex()
+	
+
+
+
+
+   .
   
    
  
