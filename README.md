@@ -1,11 +1,12 @@
-objectdb
-========
+ObjectDB Server
+===============
 
-Object db server is an HTTP based database server written in NodeJS.
-
+ObjectDB server is an HTTP based database server written in NodeJS.
 ObjectDB is currently in alpha stage and includes fast written dirty code. Therefore it is **not recommended for production use**. 
 
-Start by typing "nodejs obj.server"
+Download files and start using it by typing 
+
+	nodejs obj.server
 
 DB Level Functions
 ------------------
